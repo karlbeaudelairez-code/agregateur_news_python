@@ -8,7 +8,7 @@ class Article:
         self.lien = lien
         self.resume = resume
     def __str__(self):
-        return f"Titre: {self.titre}\nSource: {self.source},\nDate: {self.date},\nLien: {self.lien},\nResume: {self.resume}"
+        return f"Titre: {self.titre}\nSource: {self.source},\nDate: [{self.date}],\nLien: {self.lien},\nResume: {self.resume}"
     def to_dict(self):
         return {
             "titre": self.titre,
