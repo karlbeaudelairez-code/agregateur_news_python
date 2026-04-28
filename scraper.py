@@ -10,7 +10,7 @@ class Scraper:
             headers = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
             }
-            reponse = requests.get(self.url, headers=headers, timeout=60)
+            reponse = requests.get(self.url, headers=headers, timeout=30)
             soupe = BeautifulSoup(reponse.text, "xml")
             items = soupe.find_all("item")
             for item in items:
