@@ -14,7 +14,7 @@ class Stockage:
             json.dump(list_dict, f, ensure_ascii = False, indent = 4)
         
     def charger_json(self):
-        with open(self.fichier_json, "r", encoding = "uf-8") as f:
+        with open(self.fichier_json, "r", encoding = "utf-8") as f:
             data = json.load(f)
         return data
     
