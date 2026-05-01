@@ -17,12 +17,18 @@ class Stockage:
             print(f"Erreur lors de la sauvegarde du fichier json: {e}")
         
     def charger_json(self):
+<<<<<<< HEAD
         try:
             with open(self.fichier_json, "r", encoding = "utf-8") as f:
                 data = json.load(f)
             return data
         except Exception as e:
             print(f"Erreur lors du chargement du fichier json: {e}")
+=======
+        with open(self.fichier_json, "r", encoding = "utf-8") as f:
+            data = json.load(f)
+        return data
+>>>>>>> 7cbfce42005a70c91cdcf5496de04b9860e6339a
     
     def initialiser_db(self):
         connexion = sqlite3.connect(self.fichier_db)
