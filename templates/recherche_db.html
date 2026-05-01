@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Recherche en Base de Données{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Recherche dans l'historique (Base de données)</h2>
+    
+    <p>Utilisez ce formulaire pour rechercher dans les articles déjà sauvegardés lors des précédentes sessions de scraping.</p>
+
+    <form method="POST" style="margin-bottom: 30px;">
+        <input type="text" name="mot_cle" placeholder="Mot-clé (ex: Bénin, Économie...)" required 
+               value="{{ mot if mot else '' }}" 
+               style="padding: 8px; width: 300px;">
+        <button type="submit" style="padding: 8px 15px; cursor: pointer;">Rechercher en DB</button>
+    </form>
+
+    <hr>
+
+    {% if mot %}
+        <h3>Résultats en base de données pour : "{{ mot }}"</h3>
+        
+        {% if articles %}
+            <div class="results-count">
+                {{ articles|length }} article(s) trouvé(s).
+            </div>
+            
+            <div class="articles-list">
+                {% for article in articles %}
+                    <div class="article-card" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background: white;border-right: 5px solid #3498db">
+                        <h4 style="margin-top: 0; color: #2c3e50;">{{ article[1] }}</h4>
+                        <p style="font-size: 0.9em; color: #666;">
+                            <strong>Source :</strong> {{ article[2] }} | <strong>Date :</strong> {{ article[3] }}
+                        </p>
+                        <p>{{ article[5] }}</p>
+                        <a href="{{ article[4] }}" target="_blank" style="color: #13e833; font-weight: bold;">Consulter l'article original</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="color: #e74c3c;">Désolé, aucun article correspondant à ce mot-clé n'a été trouvé dans la base de données.</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

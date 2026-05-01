@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Recherche d'articles en direct (Scraping)</h2>
+
+<form method="POST">
+    <input type="text" name="mot_cle" placeholder="Entrez un mot clé..." style="padding: 8px; width: 300px;" required>
+    <button type="submit" style="padding: 8px 15px; cursor: pointer;">Lancer le Scraping</button>
+</form>
+
+{% if mot %}
+    <p>Nombre total d'articles scrapés dans les flux : {{ total }}</p>
+    <p>Résultats pour : <strong>{{ mot }}</strong></p>
+    {% if articles %}
+        <ul>
+        {% for article in articles %}
+            <li>
+                <strong>{{ article.titre }}</strong> ({{ article.source }})<br>
+                <small>{{ article.date }}</small><br>
+                <p>{{ article.resume }}</p>
+                <a href="{{ article.lien }}" target="_blank">Lire l'article</a>
+            </li>
+            <hr>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun article trouvé pour ce mot clé.</p>
+    {% endif %}
+{% endif %}
+{% endblock %}
