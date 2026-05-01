@@ -48,7 +48,6 @@ def recherche_db():
     if request.method == 'POST':
         mot_cle = request.form.get('mot_cle')
         mon_stockage = Stockage()
-        # On appelle ta méthode existante
         resultats = mon_stockage.rechercher_db(mot_cle=mot_cle)
         
     return render_template('recherche_db.html', articles=resultats, mot=mot_cle)

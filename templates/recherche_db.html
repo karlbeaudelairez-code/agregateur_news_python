@@ -21,9 +21,6 @@
         <h3>Résultats en base de données pour : "{{ mot }}"</h3>
         
         {% if articles %}
-            <div class="results-count">
-                {{ articles|length }} article(s) trouvé(s).
-            </div>
             
             <div class="articles-list">
                 {% for article in articles %}
